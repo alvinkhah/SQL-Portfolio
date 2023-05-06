@@ -1,0 +1,38 @@
+--Create a popcorn store database
+
+CREATE TABLE popcorn (id INTEGER PRIMARY KEY, flavour TEXT, taste TEXT, price INTEGER, quantity_sold INTEGER);
+
+INSERT INTO popcorn VALUES (1, "Plain", "Sweet", 3.00, 32);
+INSERT INTO popcorn VALUES (2, "Plain", "Salty", 3.00, 30);
+INSERT INTO popcorn VALUES (3, "Plain", "Mix", 3.00, 20);
+INSERT INTO popcorn VALUES (4, "Caramel", "Sweet", 4.00, 12);
+INSERT INTO popcorn VALUES (5, "Butter", "Sweet", 4.50, 16);
+INSERT INTO popcorn VALUES (6, "Corn", "Sweet", 4.50, 26);
+INSERT INTO popcorn VALUES (7, "Almond", "Sweet", 5.00, 10);
+INSERT INTO popcorn VALUES (8, "Almond", "Salty", 5.00, 11);
+INSERT INTO popcorn VALUES (9, "Pecan", "Sweet", 6.00, 18);
+INSERT INTO popcorn VALUES (10, "Macademia", "Sweet", 5.90, 23);
+INSERT INTO popcorn VALUES (11, "Macademia", "Salty", 5.90, 25);
+INSERT INTO popcorn VALUES (12, "Cashew", "Sweet", 5.90, 15);
+INSERT INTO popcorn VALUES (13, "Cashew", "Salty", 5.90, 16);
+INSERT INTO popcorn VALUES (14, "Mix", "Sweet", 4.90, 5);
+INSERT INTO popcorn VALUES (15, "Mix", "Salty", 4.90, 8);
+
+--Display the database ordered by price
+SELECT flavour, taste, price 
+FROM popcorn 
+ORDER BY price;
+
+--Display the top 3 most popular flavours
+SELECT flavour, taste, quantity_sold 
+FROM popcorn 
+ORDER BY quantity_sold DESC
+LIMIT 3;
+
+--Display minimum, average and maximum prices for the 3 taste categories
+SELECT taste,
+ROUND(MIN(price), 2) "lowest",
+ROUND(AVG(price), 2) "average",
+ROUND(MAX(price), 2) "highest"
+FROM popcorn
+GROUP BY taste;
