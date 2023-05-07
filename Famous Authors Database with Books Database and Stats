@@ -1,0 +1,197 @@
+-- Create authors table
+CREATE TABLE authors (
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    nationality TEXT,
+    marital_status TEXT,
+    number_of_children INTEGER,
+    alma_mater TEXT);
+
+-- Insert values into authors table
+INSERT INTO authors VALUES (1, "Joanne Rowling", "British", "Married", 3, "University of Exeter, Moray House");
+INSERT INTO authors VALUES (2, "Stephen Edwin King", "American", "Married", 3, "University of Maine");
+INSERT INTO authors VALUES (3, "Roald Dahl", "British", "Married", 5, "Repton School");
+INSERT INTO authors VALUES (4, "Charles Dickens", "British", "Married", 10, "NULL");
+INSERT INTO authors VALUES (5, "Mitch Albom", "American", "Married", 0, "Brandeis University; Columbia University");
+
+-- Create books table
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY,
+    author_id INTEGER,
+    title TEXT,
+    year_of_publication INTEGER,
+    genre TEXT,
+    publisher TEXT);
+    
+-- Insert values into books table
+INSERT INTO books VALUES (1, 1, "Harry Potter and the Philosopher's Stone", 1997, "Fantasy", "Bloomsbury");
+INSERT INTO books VALUES (2, 1, "Harry Potter and the Chamber of Secrets", 1998, "Fantasy", "Bloomsbury");
+INSERT INTO books VALUES (3, 1, "Harry Potter and the Prisoner of Azkaban", 1999, "Fantasy", "Bloomsbury");
+INSERT INTO books VALUES (4, 1, "Harry Potter and the Goblet of Fire", 2000, "Fantasy", "Bloomsbury");
+INSERT INTO books VALUES (5, 1, "Harry Potter and the Order of the Phoenix", 2003, "Fantasy", "Bloomsbury");
+INSERT INTO books VALUES (6, 1, "Harry Potter and the Half-Blood Prince", 2005, "Fantasy", "Bloomsbury");
+INSERT INTO books VALUES (7, 1, "Harry Potter and the Deathly Hallows", 2007, "Fantasy", "Bloomsbury");
+INSERT INTO books VALUES (8, 1, "The Casual Vacancy", 2012, "Fiction", "Little, Brown and Company");
+INSERT INTO books VALUES (9, 1, "The Cuckoo's Calling", 2013, "Fiction", "Little, Brown and Company");
+INSERT INTO books VALUES (10, 1, "The Silkworm", 2014, "Fiction", "Little, Brown and Company");
+INSERT INTO books VALUES (11, 1, "Career of Evil", 2015, "Fiction", "Little, Brown and Company");
+INSERT INTO books VALUES (12, 1, "Lethal White", 2018, "Fiction", "Little, Brown and Company");
+INSERT INTO books VALUES (13, 1, "Troubled Blood", 2020, "Fiction", "Little, Brown and Company");
+INSERT INTO books VALUES (14, 1, "The Ink Black Heart", 2022, "Fiction", "Little, Brown and Company");
+INSERT INTO books VALUES (15, 1, "The Running Grave", 2023, "Fiction", "Little, Brown and Company");
+INSERT INTO books VALUES (16, 1, "The Ickabog", 2020, "Fairy tale", "Hachette Children's Group");
+INSERT INTO books VALUES (17, 1, "The Christmas Pig", 2021, "Fairy tale", "Hachette Children's Group");
+INSERT INTO books VALUES (18, 2, "Carrie", 1974, "Horror", "Doubleday");
+INSERT INTO books VALUES (19, 2, "Salem's Lot", 1975, "Horror", "Doubleday");
+INSERT INTO books VALUES (20, 2, "Rage", 1977, "Thriller", "New American Library");
+INSERT INTO books VALUES (21, 2, "The Shining", 1977, "Horror", "Doubleday");
+INSERT INTO books VALUES (22, 2, "The Stand", 1978, "Fantasy", "Doubleday");
+INSERT INTO books VALUES (23, 2, "The Long Walk", 1978, "Horror", "New American Library");
+INSERT INTO books VALUES (24, 2, "The Dead Zone", 1979, "Thriller", "Viking Press");
+INSERT INTO books VALUES (25, 2, "Firestarter", 1980, "Horror", "Viking Press");
+INSERT INTO books VALUES (26, 2, "Roadwork", 1981, "Thriller", "New American Library");
+INSERT INTO books VALUES (27, 2, "Cujo", 1981, "Horror", "Viking Press");
+INSERT INTO books VALUES (28, 2, "The Running Man", 1982, "Fiction", "New American Library");
+INSERT INTO books VALUES (29, 2, "The Dark Tower: The Gunslinger", 1982, "Fantasy", "Donald M. Grant, Publisher");
+INSERT INTO books VALUES (30, 2, "Christine", 1983, "Horror", "Viking Press");
+INSERT INTO books VALUES (31, 2, "Pet Sematary", 1983, "Horror", "Doubleday");
+INSERT INTO books VALUES (32, 2, "The Talisman", 1984, "Fantasy", "G.P. Putnam's & Sons");
+INSERT INTO books VALUES (33, 2, "Thinner", 1984, "Horror", "New American Library");
+INSERT INTO books VALUES (34, 2, "Cycle of the Werewolf", 1985, "Horror", "Signet");
+INSERT INTO books VALUES (35, 2, "IT", 1986, "Horror", "Viking Press");
+INSERT INTO books VALUES (36, 2, "The Eyes of the Dragon", 1987, "Fantasy", "Viking Press");
+INSERT INTO books VALUES (37, 2, "The Dark Tower II: The Drawing of the Three", 1987, "Fantasy", "Donald M. Grant, Publisher");
+INSERT INTO books VALUES (38, 2, "Misery", 1987, "Horror", "Viking Press");
+INSERT INTO books VALUES (39, 2, "The Tommyknockers", 1987, "Fiction", "G.P. Putnam's & Sons");
+INSERT INTO books VALUES (40, 2, "The Dark Half", 1989, "Horror", "Viking Press");
+INSERT INTO books VALUES (41, 2, "The Dark Tower III: The Waste Lands", 1991, "Fantasy", "Donald M. Grant, Publisher");
+INSERT INTO books VALUES (42, 2, "Needful Things", 1991, "Horror", "Viking Press");
+INSERT INTO books VALUES (43, 2, "Gerald's Game", 1992, "Horror", "Viking Press");
+INSERT INTO books VALUES (44, 2, "Dolores Claiborne", 1993, "Horror", "Viking Press");
+INSERT INTO books VALUES (45, 2, "Insomnia", 1994, "Horror", "Viking Press");
+INSERT INTO books VALUES (46, 2, "Rose Madder", 1995, "Horror", "Viking Press");
+INSERT INTO books VALUES (47, 2, "Desperation", 1996, "Horror", "Viking Press");
+INSERT INTO books VALUES (48, 2, "The Dark Tower IV: Wizard and Glass", 1997, "Horror", "Donald M. Grant, Publisher");
+INSERT INTO books VALUES (49, 2, "Bag of Bones", 1998, "Horror", "Scribner");
+INSERT INTO books VALUES (50, 2, "The Girl Who Loved Tom Gordon", 1999, "Horror", "Scribner");
+INSERT INTO books VALUES (51, 2, "Dreamcatcher", 2001, "Fiction", "Scribner");
+INSERT INTO books VALUES (52, 2, "Black House", 2001, "Horror", "Random House");
+INSERT INTO books VALUES (53, 2, "From A Buick 8", 2002, "Horror", "Scribner");
+INSERT INTO books VALUES (54, 2, "The Dark Tower V: Wolves of the Calla", 2003, "Fantasy", "Scribner");
+INSERT INTO books VALUES (55, 2, "The Dark Tower VI: Song of Susannah", 2004, "Fantasy", "Donald M. Grant, Publisher");
+INSERT INTO books VALUES (56, 2, "The Dark Tower VII: The Dark Tower", 2004, "Fantasy", "Scribner");
+INSERT INTO books VALUES (57, 2, "The Colorado Kid", 2005, "Fiction", "Dorchester Publishing Co., Inc.");
+INSERT INTO books VALUES (58, 2, "Cell", 2006, "Horror", "Scribner");
+INSERT INTO books VALUES (59, 2, "Lisey's Story", 2006, "Horror", "Scribner");
+INSERT INTO books VALUES (60, 2, "Duma Key", 2008, "Horror", "Scribner");
+INSERT INTO books VALUES (61, 2, "Under the Dome", 2009, "Fiction", "Scribner");
+INSERT INTO books VALUES (62, 2, "11/22/63", 2011, "Fiction", "Scribner");
+INSERT INTO books VALUES (63, 2, "The Dark Tower: The Wind Through the Keyhole", 2012, "Fantasy", "Donald M. Grant, Publisher");
+INSERT INTO books VALUES (64, 2, "Joyland", 2013, "Horror", "Titan Books");
+INSERT INTO books VALUES (65, 2, "Doctor Sleep", 2013, "Fiction", "Scribner");
+INSERT INTO books VALUES (66, 2, "Mr. Mercedes", 2014, "Thriller", "Scribner");
+INSERT INTO books VALUES (67, 2, "Revival", 2014, "Horror", "Scribner");
+INSERT INTO books VALUES (68, 2, "Finders Keepers", 2015, "Fiction", "Scribner");
+INSERT INTO books VALUES (69, 2, "End of Watch", 2016, "Fiction", "Scribner");
+INSERT INTO books VALUES (70, 2, "Sleeping Beauties", 2017, "Horror", "Scribner");
+INSERT INTO books VALUES (71, 2, "The Outsider", 2018, "Horror", "Scribner");
+INSERT INTO books VALUES (72, 2, "The Institute", 2019, "Horror", "Scribner");
+INSERT INTO books VALUES (73, 2, "Later", 2021, "Horror", "Hard Case Crime");
+INSERT INTO books VALUES (74, 2, "Billy Summers", 2021, "Fiction", "Scribner");
+INSERT INTO books VALUES (75, 2, "Gwendy's Final Task", 2022, "Fiction", "Cemetery Dance Publications");
+INSERT INTO books VALUES (76, 2, "Fairy Tale", 2022, "Fantasy", "Scribner");
+INSERT INTO books VALUES (77, 2, "Holly", 2023, "Thriller", "Scribner");
+INSERT INTO books VALUES (78, 3, "The Gremlins", 1943, "Fiction", "Walt Disney Company");
+INSERT INTO books VALUES (79, 3, "Some Time Never: A Fable for Supermen", 1948, "Fiction", "Scribner");
+INSERT INTO books VALUES (80, 3, "James and the Giant Peach", 1961, "Fiction", "Alfred A. Knopf, Inc.");
+INSERT INTO books VALUES (81, 3, "Charlie and the Chocolate Factory", 1964, "Fiction", "George Allen & Unwin");
+INSERT INTO books VALUES (82, 3, "The Magic Finger", 1966, "Fiction", "Harper & Row");
+INSERT INTO books VALUES (83, 3, "Fantastic Mr Fox", 1970, "Fiction", "Alfred A. Knopf, Inc.");
+INSERT INTO books VALUES (84, 3, "Charlie and the Great Glass Elevator", 1972, "Fiction", "Alfred A. Knopf, Inc.");
+INSERT INTO books VALUES (85, 3, "Danny, the Champion of the World", 1975, "Fiction", "Jonathan Cape");
+INSERT INTO books VALUES (86, 3, "The Enormous Crocodile", 1978, "Fiction", "Jonathan Cape");
+INSERT INTO books VALUES (87, 3, "The Twits", 1980, "Fiction", "Jonathan Cape");
+INSERT INTO books VALUES (88, 3, "George's Marvellous Medicine", 1981, "Fiction", "Jonathan Cape");
+INSERT INTO books VALUES (89, 3, "The BFG", 1982, "Fiction", "Jonathan Cape");
+INSERT INTO books VALUES (90, 3, "The Witches", 1983, "Fiction", "Jonathan Cape");
+INSERT INTO books VALUES (91, 3, "The Giraffe and the Pelly and Me", 1985, "Fiction", "Jonathan Cape");
+INSERT INTO books VALUES (92, 3, "Matilda", 1988, "Fiction", "Jonathan Cape");
+INSERT INTO books VALUES (93, 3, "Esio Trot", 1990, "Fiction", "Jonathan Cape");
+INSERT INTO books VALUES (94, 3, "The Vicar of Nibbleswicke", 1991, "Fiction", "Century");
+INSERT INTO books VALUES (95, 3, "The Minpins", 1991, "Fiction", "Jonathan Cape");
+INSERT INTO books VALUES (96, 3, "My Uncle Oswald", 1979, "Comedy", "Michael Joseph");
+INSERT INTO books VALUES (97, 3, "The Mildenhall Treasure", 1999, "Non-Fiction", "Jonathan Cape");
+INSERT INTO books VALUES (98, 3, "Boy: Tales of Childhood", 1984, "Non-Fiction", "Cape");
+INSERT INTO books VALUES (99, 3, "Going Solo", 1986, "Non-Fiction", "Jonathan Cape");
+INSERT INTO books VALUES (100, 3, "Memories with Food at Gipsy House", 1991, "Non-Fiction", "Viking Press");
+INSERT INTO books VALUES (101, 3, "My Year", 1993, "Non-Fiction", "Jonathan Cape");
+INSERT INTO books VALUES (102, 4, "The Pickwick Papers", 1837, "Fiction", "Chapman & Hall");
+INSERT INTO books VALUES (103, 4, "Oliver Twist", 1838, "Fiction", "Richard Bentley");
+INSERT INTO books VALUES (104, 4, "Nicholas Nickleby", 1839, "Fiction", "Chapman & Hall");
+INSERT INTO books VALUES (105, 4, "The Old Curiosity Shop", 1841, "Fiction", "Chapman & Hall");
+INSERT INTO books VALUES (106, 4, "Barnaby Rudge", 1841, "Fiction", "Chapman & Hall");
+INSERT INTO books VALUES (107, 4, "Martin Chuzzlewit", 1844, "Fiction", "Chapman & Hall");
+INSERT INTO books VALUES (108, 4, "Dombey and Son", 1848, "Fiction", "Bradbury & Evans");
+INSERT INTO books VALUES (109, 4, "David Copperfield", 1850, "Fiction", "Bradbury & Evans");
+INSERT INTO books VALUES (110, 4, "Bleak House", 1853, "Fiction", "Bradbury & Evans");
+INSERT INTO books VALUES (111, 4, "Hard Times", 1854, "Fiction", "Bradbury & Evans");
+INSERT INTO books VALUES (112, 4, "Little Dorrit", 1857, "Fiction", "Bradbury & Evans");
+INSERT INTO books VALUES (113, 4, "A Tale of Two Cities", 1859, "Fiction", "Chapman & Hall");
+INSERT INTO books VALUES (114, 4, "Great Expectations", 1861, "Fiction", "Chapman & Hall");
+INSERT INTO books VALUES (115, 4, "Our Mutual Friend", 1865, "Fiction", "Chapman & Hall");
+INSERT INTO books VALUES (116, 4, "The Mystery of Edwin Drood", 1870, "Fiction", "Chapman & Hall");
+INSERT INTO books VALUES (117, 4, "A Christmas Carol", 1843, "Fiction", "Chapman & Hall");
+INSERT INTO books VALUES (118, 4, "The Chimes", 1844, "Fiction", "Chapman & Hall");
+INSERT INTO books VALUES (119, 4, "The Cricket on the Hearth", 1845, "Fiction", "Bradbury & Evans");
+INSERT INTO books VALUES (120, 4, "The Battle of Life", 1846, "Fiction", "Bradbury & Evans");
+INSERT INTO books VALUES (121, 4, "The Haunted Man and the Ghost's Bargain", 1848, "Fiction", "Bradbury & Evans");
+INSERT INTO books VALUES (122, 5, "Tuesdays with Morrie", 1997, "Non-Fiction", "Doubleday");
+INSERT INTO books VALUES (123, 5, "The Five People You Meet in Heaven", 2003, "Fiction", "Hyperion");
+INSERT INTO books VALUES (124, 5, "For One More Day", 2006, "Fiction", "Little, Brown and Company");
+INSERT INTO books VALUES (125, 5, "Have a Little Faith", 2009, "Non-Fiction", "Hyperion");
+INSERT INTO books VALUES (126, 5, "The Time Keeper", 2012, "Fiction", "Hyperion");
+INSERT INTO books VALUES (127, 5, "The First Phone Call from Heaven", 2013, "Fiction", "HarperCollins");
+INSERT INTO books VALUES (128, 5, "The Magic Strings of Frankie Presto", 2015, "Fiction", "HarperCollins");
+INSERT INTO books VALUES (129, 5, "The Next Person You Meet in Heaven", 2018, "Fiction", "HarperCollins");
+INSERT INTO books VALUES (130, 5, "Finding Chika", 2019, "Non-Fiction", "HarperCollins");
+INSERT INTO books VALUES (131, 5, "The Stranger in the Lifeboat", 2021, "Fiction", "HarperCollins");
+
+-- Query the entire author table
+SELECT * FROM authors;
+
+-- Query the entire books table
+SELECT * FROM books;
+
+-- Total number of books which each author wrote, in descending order
+SELECT a.name,
+    COUNT(b.author_id) AS Total_Number_of_Books
+FROM authors AS a
+LEFT JOIN books AS b
+ON a.id = b.author_id
+GROUP BY a.name
+ORDER BY Total_Number_of_Books DESC;
+
+-- Total number of books which each author wrote group by genre
+SELECT a.name,
+    b.genre,
+    COUNT(b.genre) AS Number_of_Books
+FROM authors AS a
+LEFT JOIN books AS b
+ON a.id = b.author_id
+GROUP BY a.name, b.genre;
+    
+-- Top 5 publishers with the highest number of publications
+SELECT publisher,
+    COUNT(publisher) AS Total_Number_of_Books_Published
+FROM books
+GROUP BY publisher
+ORDER BY Total_Number_of_Books_Published DESC
+LIMIT 5;
+
+-- Which are the fiction books published in the last 10 years
+SELECT a.name, b.title, b.year_of_publication
+FROM authors AS a
+LEFT JOIN books AS b
+ON a.id = b.author_id
+WHERE year_of_publication >= 2013 AND b.genre = "Fiction"
+ORDER BY year_of_publication DESC;
