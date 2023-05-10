@@ -1,3 +1,5 @@
+-- In this SQL, I queried a database of 2 tables about netflix shows and answered questions about it.
+
 -- Query the netflix_people table
 SELECT * FROM "CharlotteChaze/BreakIntoTech"."netflix_people";
 
