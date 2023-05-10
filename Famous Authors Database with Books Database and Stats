@@ -1,3 +1,5 @@
+-- In this SQL, I am creating a database of 2 tables, namely authors and books, and querying them.
+
 -- Create authors table
 CREATE TABLE authors (
     id INTEGER PRIMARY KEY,
