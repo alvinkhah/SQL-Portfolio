@@ -1,0 +1,66 @@
+-- In this SQL, I queried the Spotify data from Kaggle and answered questions about it.
+
+-- Create Spotifydata Table
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+song_key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+song_mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness decimal(8,7) NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL );
+
+
+-- Which are the top 3 most popular tracks and who are the artists?
+SELECT popularity, track_name, artist_name
+FROM Spotifydata
+ORDER BY popularity DESC
+LIMIT 3;
+
+
+-- Which artists performed the 3 tracks that have the highest tempo and which tracks are they?
+SELECT artist_name, track_name, tempo
+FROM Spotifydata
+ORDER BY tempo DESC
+LIMIT 3;
+
+
+-- Which are the 10 most danceable tracks?
+SELECT track_name, danceability
+FROM Spotifydata
+ORDER BY danceability DESC
+LIMIT 10;
+
+
+-- What is the average danceability of the 10 most popular tracks?
+SELECT AVG(danceability) AS Average_Danceability_of_10_Most_Popular_Tracks
+FROM Spotifydata
+WHERE track_name IN 
+    (SELECT track_name
+    FROM Spotifydata
+    ORDER BY popularity DESC
+    LIMIT 10);
+
+
+-- Which are the 10 longest tracks, how long are they in minutes, who are the artists and what are their popularity scores?
+SELECT artist_name, popularity, (duration_ms / 60000) AS Duration_in_min    
+FROM Spotifydata
+ORDER BY duration_ms DESC
+LIMIT 10;
+
+
+-- What is the average popularity of the tracks with song mode versus those without?
+SELECT AVG(popularity), song_mode
+FROM Spotifydata
+GROUP BY song_mode;
