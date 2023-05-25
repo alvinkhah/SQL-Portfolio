@@ -1,0 +1,137 @@
+-- In this SQL, I answered questions regarding the chinook database.
+
+-- Show Customers (their full names, customer ID, and country) who are not in the US. (Hint: != or <> can be used to say "is not equal to").
+SELECT (FirstName || ' ' || LastName) AS FullName, Customerid, Country
+FROM customers
+WHERE Country <> 'USA';
+
+
+-- Show only the Customers from Brazil.
+SELECT (FirstName || ' ' || LastName) AS FullName, Customerid, Country
+FROM customers
+WHERE Country = 'Brazil';
+
+
+-- Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
+SELECT (c.FirstName || ' ' || c.LastName) AS FullName, i.invoiceid, i.InvoiceDate, BillingCountry
+From customers AS c
+INNER JOIN invoices AS i
+ON c.Customerid = i.Customerid
+WHERE c.Country = 'Brazil';
+
+
+-- Show the Employees who are Sales Agents.
+SELECT * 
+FROM employees
+WHERE Title LIKE 'Sales%Agent';
+
+
+-- Find a unique/distinct list of billing countries from the Invoice table.
+SELECT DISTINCT BillingCountry
+FROM invoices;
+
+
+-- Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
+WITH invoice_customer_table AS (
+    SELECT i.Invoiceid, c.Customerid, c.SupportRepid
+    FROM invoices AS i
+    LEFT JOIN customers AS c
+    ON i.Customerid = c.Customerid
+    )
+
+SELECT Invoiceid, (e.FirstName || ' ' || e.LastName) AS FullName, e.Title
+FROM invoice_customer_table
+INNER JOIN employees AS e
+ON SupportRepid = e.Employeeid
+WHERE Title LIKE 'Sales%Agent'
+ORDER BY Invoiceid ASC;
+
+
+-- Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
+WITH invoice_customer_table AS (
+    SELECT i.Invoiceid, i.Total, (c.FirstName || ' ' || c.LastName) AS CustomerFullName, c.Country, c.SupportRepid
+    FROM invoices AS i
+    LEFT JOIN customers AS c
+    ON i.Customerid = c.Customerid
+    )
+
+SELECT Total AS InvoiceTotal, CustomerFullName, Country, (e.FirstName || ' ' || e.LastName) AS SalesAgentFullName
+FROM invoice_customer_table
+INNER JOIN employees AS e
+ON SupportRepid = e.Employeeid
+WHERE Title LIKE 'Sales%Agent'
+ORDER BY Invoiceid ASC;
+
+
+-- How many Invoices were there in 2009?
+SELECT COUNT(Invoiceid)
+FROM invoices
+WHERE InvoiceDate LIKE '2009%';
+
+
+-- What are the total sales for 2009?
+SELECT SUM(Total)
+FROM invoices
+WHERE InvoiceDate LIKE '2009%';
+
+
+-- List the purchased track names and their corresponding invoice line IDs.
+SELECT t.Name AS track_name, it.Invoiceid
+FROM tracks AS t
+INNER JOIN invoice_items AS it
+ON t.Trackid = it.Trackid;
+
+
+-- Write a query that includes the purchased track name AND artist name with each invoice line ID.
+SELECT t.Name AS track_name, art.Name AS artist_name, it.Invoiceid
+FROM tracks AS t
+INNER JOIN invoice_items AS it ON t.Trackid = it.Trackid
+INNER JOIN (SELECT al.Artistid, ar.Name, al.Albumid
+            FROM albums AS al
+            INNER JOIN artists AS ar
+            ON al.Artistid = ar.Artistid) AS art ON t.Albumid = art.Albumid;
+
+
+-- Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+SELECT t.Name AS track_name, al.Title AS album_title, mt.Name AS media_type, g.Name AS genre
+FROM tracks AS t
+INNER JOIN albums AS al ON t.Albumid = al.Albumid
+INNER JOIN media_types AS mt ON t.MediaTypeid = mt.MediaTypeid
+INNER JOIN genres AS g ON t.Genreid = g.Genreid;
+
+
+-- Show the total sales made by each sales agent.
+SELECT (e.FirstName || ' ' || e.LastName) AS employee_name, ROUND(SUM(i.Total), 2) AS total_sales
+FROM customers AS c
+INNER JOIN employees AS e ON c.SupportRepid = e.Employeeid
+INNER JOIN invoices AS i ON c.Customerid = i.Customerid
+GROUP BY e.Employeeid;
+
+
+-- Which sales agent made the most dollars in sales in 2009?
+SELECT (e.FirstName || ' ' || e.LastName) AS employee_name, ROUND(SUM(i.Total), 2) AS total_sales_in_2009
+FROM customers AS c
+INNER JOIN employees AS e ON c.SupportRepid = e.Employeeid
+INNER JOIN invoices AS i ON c.Customerid = i.Customerid
+WHERE i.InvoiceDate LIKE '2009%'
+GROUP BY e.Employeeid
+ORDER BY total_sales_in_2009 DESC
+LIMIT 1;
+
+
+-- How many tracks are there in each of the playlists?
+SELECT p.Name AS playlist_name, COUNT(pt.Trackid) AS num_of_tracks
+FROM playlists AS p
+INNER JOIN playlist_track AS pt
+ON p.Playlistid = pt.Playlistid
+GROUP BY p.Playlistid;
+
+
+-- Which are the top 3 playlists with the longest durations?
+SELECT p.Name AS playlist, (SUM(t.Milliseconds) / 6000) AS duration_in_min
+FROM playlist_track AS pt
+INNER JOIN playlists AS p ON pt.Playlistid = p.Playlistid
+INNER JOIN tracks AS t ON pt.Trackid = t.Trackid
+GROUP BY p.Playlistid
+ORDER BY duration_in_min DESC
+LIMIT 3;
